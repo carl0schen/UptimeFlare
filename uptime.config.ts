@@ -17,13 +17,13 @@ const workerConfig = {
       // `id` should be unique, history will be kept if the `id` remains constant
       id: 'foo_monitor',
       // `name` is used at status page and callback message
-      name: 'My API Monitor',
+      name: 'Carlos Life Book',
       // `method` should be a valid HTTP Method
-      method: 'POST',
+      method: 'GET',
       // `target` is a valid URL
       target: 'https://carlos.mynet.tw',
       // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
-      tooltip: 'This is a tooltip for this monitor',
+      tooltip: 'Carlos Life Book',
       // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
       statusPageLink: 'https://carlos.mynet.tw',
       // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
@@ -35,6 +35,46 @@ const workerConfig = {
         'User-Agent': 'Uptimeflare',
      //   Authorization: 'Bearer YOUR_TOKEN_HERE',
       },
+    },
+    {  
+        id: 'foo_monitor_2',
+        name: 'RACE.TW',
+        method: 'GET',
+        target: 'https://race.tw',
+        tooltip: 'RACE.TW',
+        statusPageLink: 'https://race.tw',
+        expectedCodes: [200],
+        timeout: 10000,
+        headers: {
+          'User-Agent': 'Uptimeflare',
+        },
+    },
+    {
+        id: 'foo_monitor_3',
+        name: 'Miniflux - Race.tw',
+        method: 'GET',
+        target: 'https://reader.race.tw',
+        tooltip: 'Miniflux - Race.tw',
+        statusPageLink: 'https://reader.race.tw',
+        expectedCodes: [200],
+        timeout: 10000,
+        headers: {
+          'User-Agent': 'Uptimeflare',
+        },
+      },
+    {  
+        id: 'foo_monitor_4',
+        name: 'GHOST.TW',
+        method: 'GET',
+        target: 'https://ghost.tw',
+        tooltip: 'GHOST.TW',
+        statusPageLink: 'https://ghost.tw',
+        expectedCodes: [200],
+        timeout: 10000,
+        headers: {
+          'User-Agent': 'Uptimeflare',
+        },
+    },
       // [OPTIONAL] body to be sent
      // body: 'Hello, world!',
       // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
@@ -42,19 +82,19 @@ const workerConfig = {
       // [OPTIONAL] if specified, the check will run in your specified region,
       // refer to docs https://github.com/lyc8503/UptimeFlare/wiki/Geo-specific-checks-setup before setting this value
      // checkLocationWorkerRoute: 'https://xxx.example.com',
-    },
+    //},
     // Example TCP Monitor
-    {
-      id: 'test_tcp_monitor',
-      name: 'Example TCP Monitor',
+    //{
+    //  id: 'test_tcp_monitor',
+    //  name: 'Example TCP Monitor',
       // `method` should be `TCP_PING` for tcp monitors
-      method: 'TCP_PING',
+    //  method: 'TCP_PING',
       // `target` should be `host:port` for tcp monitors
-      target: '1.2.3.4:22',
-      tooltip: 'My production server SSH',
-      statusPageLink: 'https://example.com',
-      timeout: 5000,
-    },
+    //  target: '1.2.3.4:22',
+    //  tooltip: 'My production server SSH',
+    //  statusPageLink: 'https://example.com',
+    //  timeout: 5000,
+    //},
   ],
   notification: {
     // [Optional] apprise API server URL
@@ -64,7 +104,7 @@ const workerConfig = {
     // if not specified, no notification will be sent
     recipientUrl: "tgram://bottoken/ChatID",
     // [Optional] timezone used in notification messages, default to "Etc/GMT"
-    timeZone: "Asia/Shanghai",
+    timeZone: "Asia/Taipei",
     // [Optional] grace period in minutes before sending a notification
     // notification will be sent only if the monitor is down for N continuous checks after the initial failure
     // if not specified, notification will be sent immediately
