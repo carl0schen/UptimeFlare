@@ -1,6 +1,6 @@
 const pageConfig = {
   // Title for your status page
-  title: "lyc8503's Status Page",
+  title: "MYNET's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
     { link: 'mailto:reports@mynet.tw', label: 'Email Me', highlight: true },
