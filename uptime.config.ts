@@ -15,7 +15,7 @@ const workerConfig = {
     {
       id: 'foo_monitor_1',
       name: 'Carlos Life Book',
-      method: 'POST',
+      method: 'HEAD',
       target: 'https://carlos.mynet.tw',
       tooltip: 'Carlos Life Book',
       statusPageLink: 'https://carlos.mynet.tw',
@@ -28,7 +28,7 @@ const workerConfig = {
     {  
       id: 'foo_monitor_2',
       name: 'RACE.TW',
-      method: 'POST',
+      method: 'HEAD',
       target: 'https://race.tw',
       tooltip: 'RACE.TW',
       statusPageLink: 'https://race.tw',
@@ -41,7 +41,7 @@ const workerConfig = {
     {
       id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
-      method: 'POST',
+      method: 'HEAD',
       target: 'https://reader.race.tw',
       tooltip: 'Miniflux - Race.tw',
       statusPageLink: 'https://reader.race.tw',
@@ -54,7 +54,7 @@ const workerConfig = {
     {  
       id: 'foo_monitor_4',
       name: 'GHOST.TW',
-      method: 'POST',
+      method: 'HEAD',
       target: 'https://ghost.tw',
       tooltip: 'GHOST.TW',
       statusPageLink: 'https://ghost.tw',
