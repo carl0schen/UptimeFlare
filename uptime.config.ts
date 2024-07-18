@@ -39,7 +39,7 @@ const workerConfig = {
       },
     },
     {
-      id: 'test_tcp_monitor',
+      id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
       method: 'TCP_PING',
       target: 'https://reader.race.tw',
