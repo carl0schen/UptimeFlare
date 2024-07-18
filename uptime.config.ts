@@ -41,7 +41,7 @@ const workerConfig = {
     {
       id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
-      method: 'GET',
+      method: 'HEAD',
       target: 'https://reader.race.tw',
       tooltip: 'Miniflux - Race.tw',
       statusPageLink: 'https://reader.race.tw',
