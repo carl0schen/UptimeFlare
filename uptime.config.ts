@@ -41,11 +41,14 @@ const workerConfig = {
     {
       id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
-      method: 'TCP_PING',
+      method: 'GET',
       target: 'https://reader.race.tw',
       tooltip: 'Miniflux - Race.tw',
       statusPageLink: 'https://reader.race.tw',
-      timeout: 5000,
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
     },
     {  
       id: 'foo_monitor_4',
