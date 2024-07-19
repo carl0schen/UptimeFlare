@@ -45,7 +45,7 @@ const workerConfig = {
       target: 'https://reader.race.tw',
       tooltip: 'Miniflux - Race.tw',
       statusPageLink: 'https://reader.race.tw',
-      timeout: 20000,
+      timeout: 10000,
       headers: {
         'User-Agent': 'Uptimeflare',
       },
