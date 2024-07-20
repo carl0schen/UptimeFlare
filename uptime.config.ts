@@ -68,7 +68,7 @@ const workerConfig = {
       id: 'tcp_monitor_1',
       name: 'Miniflux - Race.tw',
       method: 'TCP_PING',
-      target: 'reader.race.tw:443',
+      target: 'https://reader.race.tw',
       tooltip: 'Miniflux - Race.tw',
       // statusPageLink: 'https://example.com',
       timeout: 5000,
