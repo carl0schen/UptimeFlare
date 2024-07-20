@@ -38,19 +38,19 @@ const workerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
-    {
-      id: 'foo_monitor_3',
-      name: 'Miniflux - Race.tw',
-      method: 'GET',
-      target: 'https://reader.race.tw',
-      tooltip: 'Miniflux - Race.tw',
-      // statusPageLink: 'https://reader.race.tw',
-      expectedCodes: [200],
-      timeout: 10000,
-      headers: {
-        'User-Agent': 'Uptimeflare',
-      },
-    },
+    //{
+    //  id: 'foo_monitor_3',
+    //  name: 'Miniflux - Race.tw',
+    //  method: 'GET',
+    //  target: 'https://reader.race.tw',
+    //  tooltip: 'Miniflux - Race.tw',
+    //  statusPageLink: 'https://reader.race.tw',
+    //  expectedCodes: [200],
+    //  timeout: 10000,
+    //  headers: {
+    //    'User-Agent': 'Uptimeflare',
+    //  },
+    //},
     {  
       id: 'foo_monitor_4',
       name: 'GHOST.TW',
@@ -63,6 +63,15 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare',
       },
+    },
+    {
+      id: 'tcp_monitor_1',
+      name: 'Miniflux - Race.tw',
+      method: 'TCP_PING',
+      target: 'reader.race.tw:443',
+      tooltip: 'Miniflux - Race.tw',
+      // statusPageLink: 'https://example.com',
+      timeout: 5000,
     },
   ],
   notification: {
