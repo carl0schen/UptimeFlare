@@ -64,6 +64,19 @@ const workerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
+    {  
+      id: 'foo_monitor_5',
+      name: '美好臺灣',
+      method: 'GET',
+      target: 'https://may.tw',
+      tooltip: 'GHOST.TW',
+      statusPageLink: 'https://may.tw',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+    },
   ],
   notification: {
     // [Optional] apprise API server URL
