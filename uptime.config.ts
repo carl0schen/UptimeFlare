@@ -66,7 +66,7 @@ const workerConfig = {
     },
     {  
       id: 'foo_monitor_5',
-      name: '美好臺灣 - Soloist.AI示範站',
+      name: '美好臺灣 - Solo AI示範站',
       method: 'GET',
       target: 'https://may.tw',
       tooltip: 'GHOST.TW',
