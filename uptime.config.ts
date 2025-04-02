@@ -69,7 +69,7 @@ const workerConfig = {
       name: '美好臺灣 - Solo AI示範站',
       method: 'GET',
       target: 'https://may.tw',
-      tooltip: 'GHOST.TW',
+      tooltip: '美好臺灣 - Solo AI示範站',
       statusPageLink: 'https://may.tw',
       expectedCodes: [200],
       timeout: 10000,
