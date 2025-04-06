@@ -69,7 +69,7 @@ const workerConfig = {
       name: '美好臺灣',
       method: 'GET',
       target: 'https://may.tw',
-      tooltip: 'Demo website built by Solo',
+      tooltip: 'Demo website made by Solo',
       statusPageLink: 'https://may.tw',
       expectedCodes: [200],
       timeout: 10000,
