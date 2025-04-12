@@ -68,9 +68,9 @@ const workerConfig = {
       id: 'foo_monitor_5',
       name: '美好臺灣',
       method: 'GET',
-      target: 'https://may.tw',
+      target: 'https://discover.tw',
       tooltip: 'Demo website made by Solo',
-      statusPageLink: 'https://may.tw',
+      statusPageLink: 'https://discover.tw',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
