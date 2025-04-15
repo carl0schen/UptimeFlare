@@ -76,6 +76,7 @@ const workerConfig = {
       name: '美好臺灣',
       method: 'GET',
       target: 'https://discover.tw',
+      checkProxy: 'worker://wnam',
       tooltip: 'Demo website made by Solo',
       statusPageLink: 'https://discover.tw',
       expectedCodes: [200],
