@@ -1,55 +1,35 @@
 import { workerConfig } from '../../uptime.config'
 import { formatStatusChangeNotification, getWorkerLocation, notifyWithApprise } from './util'
-import { MonitorState } from '../../uptime.types'
+import { MonitorState, MonitorTarget } from '../../uptime.types'
 import { getStatus } from './monitor'
+import { DurableObject } from 'cloudflare:workers'
 
 export interface Env {
   UPTIMEFLARE_STATE: KVNamespace
+  REMOTE_CHECKER_DO: DurableObjectNamespace<RemoteChecker>
 }
 
 export default {
-  async fetch(request: Request): Promise<Response> {
-    const workerLocation = request.cf?.colo
-    console.log(`Handling request event at ${workerLocation}...`)
-
-    if (request.method !== 'POST') {
-      return new Response('Remote worker is working...', { status: 405 })
-    }
-
-    const targetId = (await request.json<{ target: string }>())['target']
-    const target = workerConfig.monitors.find((m) => m.id === targetId)
-
-    if (target === undefined) {
-      return new Response('Target Not Found', { status: 404 })
-    }
-
-    const status = await getStatus(target)
-
-    return new Response(
-      JSON.stringify({
-        location: workerLocation,
-        status: status,
-      }),
-      {
-        headers: {
-          'content-type': 'application/json;charset=UTF-8',
-        },
-      }
-    )
-  },
-
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
     const workerLocation = (await getWorkerLocation()) || 'ERROR'
     console.log(`Running scheduled event on ${workerLocation}...`)
 
     // Auxiliary function to format notification and send it via apprise
     let formatAndNotify = async (
-      monitor: any,
+      monitor: MonitorTarget,
       isUp: boolean,
       timeIncidentStart: number,
       timeNow: number,
       reason: string
     ) => {
+      // Skip notification if monitor is in the skip list
+      // @ts-ignore
+      const skipList: string[] = workerConfig.notification?.skipNotificationIds
+      if (skipList && skipList.includes(monitor.id)) {
+        console.log(`Skipping notification for ${monitor.name} (${monitor.id} in skipNotificationIds)`)
+        return
+      }
+
       if (workerConfig.notification?.appriseApiServer && workerConfig.notification?.recipientUrl) {
         const notification = formatStatusChangeNotification(
           monitor,
@@ -98,23 +78,37 @@ export default {
       let checkLocation = workerLocation
       let status
 
-      if (monitor.checkLocationWorkerRoute) {
-        // Initiate a check from a different location
+      if (monitor.checkProxy) {
+        // Initiate a check using proxy (Geo-specific monitoring)
         try {
-          console.log('Calling worker: ' + monitor.checkLocationWorkerRoute)
-          const resp = await (
-            await fetch(monitor.checkLocationWorkerRoute, {
-              method: 'POST',
-              body: JSON.stringify({
-                target: monitor.id,
-              }),
+          console.log('Calling check proxy: ' + monitor.checkProxy)
+          let resp
+          if (monitor.checkProxy.startsWith("worker://")) {
+            const doLoc = monitor.checkProxy.replace("worker://", "")
+            const doId = env.REMOTE_CHECKER_DO.idFromName(doLoc)
+            const doStub = env.REMOTE_CHECKER_DO.get(doId, {
+              locationHint: doLoc as DurableObjectLocationHint
             })
-          ).json<{ location: string; status: { ping: number; up: boolean; err: string } }>()
+            resp = await doStub.getLocationAndStatus(monitor)
+          } else {
+            resp = await (
+              await fetch(monitor.checkProxy, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(monitor),
+              })
+            ).json<{location: string; status: {ping: number; up: boolean; err: string}}>()
+          }
           checkLocation = resp.location
           status = resp.status
         } catch (err) {
-          console.log('Error calling worker: ' + err)
-          status = { ping: 0, up: false, err: 'Error initiating check from remote worker' }
+          console.log('Error calling proxy: ' + err)
+          if (monitor.checkProxyFallback) {
+            console.log('Falling back to local check...')
+            status = await getStatus(monitor)
+          } else {
+            status = { ping: 0, up: false, err: 'Error initiating check from remote worker' }
+          }
         }
       } else {
         // Initiate a check from the current location
@@ -316,4 +310,20 @@ export default {
       console.log("Skipping state update due to cooldown period.")
     }
   },
+}
+
+export class RemoteChecker extends DurableObject {
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env)
+  }
+
+  async getLocationAndStatus(monitor: MonitorTarget): Promise<{location: string; status: {ping: number; up: boolean; err: string}}> {
+    const colo = await getWorkerLocation() as string
+    console.log(`Running remote checker (DurableObject) at ${colo}...`)
+    const status = await getStatus(monitor)
+    return {
+      location: colo,
+      status: status,
+    }
+  }
 }
