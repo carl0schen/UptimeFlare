@@ -10,7 +10,7 @@ const pageConfig = {
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
     "🌐 Public": ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4','foo_monitor_5'],
-    "🔐 Private": ['foo_monitor_3', 'tcp_monitor_1'],
+    "🔐 Private": ['foo_monitor_3', 'foo_monitor_6'],
   },
 }
 
@@ -85,11 +85,15 @@ const workerConfig = {
       },
     },
     {
-      id: 'tcp_monitor_1',
-      name: 'SSH Service',
-      method: 'TCP_PING',
-      target: '122.116.57.95',
-      timeout: 5000,
+      id: 'foo_monitor_6',
+      name: 'Router Service',
+      method: 'GET',
+      target: 'https://r0uter.synology.me',
+      checkProxy: 'worker://sam',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
       },
     },
   ],
