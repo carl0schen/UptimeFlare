@@ -49,7 +49,7 @@ const workerConfig = {
       id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
       method: 'GET',
-      statusPageLink: 'https://reader.race.tw',
+      target: 'https://reader.race.tw',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
@@ -87,7 +87,7 @@ const workerConfig = {
       id: 'foo_monitor_6',
       name: 'Router Service',
       method: 'GET',
-      statusPageLink: 'https://r0uter.synology.me:8001/',
+      target: 'https://r0uter.synology.me:8001/',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
