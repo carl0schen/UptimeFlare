@@ -87,14 +87,11 @@ const workerConfig = {
     {
       id: 'foo_monitor_6',
       name: 'Router Service',
-      method: 'GET',
-      target: 'https://r0uter.synology.me',
-      checkProxy: 'worker://sam',
-      expectedCodes: [200],
-      timeout: 10000,
-      headers: {
-        'User-Agent': 'Uptimeflare',
-      },
+      // `method` should be `TCP_PING` for tcp monitors
+      method: 'TCP_PING',
+      // `target` should be `host:port` for tcp monitors
+      target: 'r0uter.synology.me:80',
+      timeout: 5000,
     },
   ],
   notification: {
