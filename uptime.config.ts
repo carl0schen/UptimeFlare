@@ -10,7 +10,7 @@ const pageConfig = {
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
     "🌐 Public": ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4','foo_monitor_5'],
-    "🔐 Private": ['foo_monitor_3'],
+    "🔐 Private": ['foo_monitor_3', 'foo_monitor_6'],
   },
 }
 
@@ -49,8 +49,6 @@ const workerConfig = {
       id: 'foo_monitor_3',
       name: 'Miniflux - Race.tw',
       method: 'GET',
-      target: 'https://reader.race.tw',
-      tooltip: 'Miniflux - Race.tw',
       statusPageLink: 'https://reader.race.tw',
       expectedCodes: [200],
       timeout: 10000,
@@ -79,6 +77,17 @@ const workerConfig = {
       checkProxy: 'worker://wnam',
       tooltip: 'Demo website made by Solo',
       statusPageLink: 'https://discover.tw',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+    },
+    {
+      id: 'foo_monitor_6',
+      name: 'Router Service',
+      method: 'GET',
+      statusPageLink: 'https://r0uter.synology.me:8001/',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
