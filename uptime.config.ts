@@ -89,7 +89,7 @@ const workerConfig = {
       name: 'Router Service',
       method: 'GET',
       target: 'https://r0uter.synology.me',
-      checkProxy: 'worker://wnam',
+      checkProxy: 'worker://enam',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
