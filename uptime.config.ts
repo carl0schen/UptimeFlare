@@ -88,7 +88,7 @@ const workerConfig = {
       id: 'tcp_monitor_1',
       name: 'SSH Service',
       method: 'TCP_PING',
-      target: '122.116.57.95:2160',
+      target: '122.116.57.95',
       timeout: 5000,
       },
     },
