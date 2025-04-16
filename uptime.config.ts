@@ -50,6 +50,7 @@ const workerConfig = {
       name: 'Miniflux - Race.tw',
       method: 'GET',
       target: 'https://reader.race.tw',
+      checkProxy: 'worker://apac',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
@@ -88,6 +89,7 @@ const workerConfig = {
       name: 'Router Service',
       method: 'GET',
       target: 'https://r0uter.synology.me:8001/',
+      checkProxy: 'worker://apac',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
