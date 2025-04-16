@@ -50,6 +50,7 @@ const workerConfig = {
       name: 'Miniflux RSS Reader',
       method: 'GET',
       target: 'https://reader.race.tw',
+      tooltip: 'Self-hosting with Docker'
       checkProxy: 'worker://apac',
       expectedCodes: [200],
       timeout: 10000,
@@ -87,10 +88,9 @@ const workerConfig = {
     {
       id: 'foo_monitor_6',
       name: 'Router Service',
-      // `method` should be `TCP_PING` for tcp monitors
       method: 'TCP_PING',
-      // `target` should be `host:port` for tcp monitors
       target: 'r0uter.synology.me:80',
+      checkProxy: 'worker://apac',
       timeout: 5000,
     },
   ],
