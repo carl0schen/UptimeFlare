@@ -73,7 +73,7 @@ const workerConfig = {
     },
     {  
       id: 'foo_monitor_5',
-      name: '美好臺灣',
+      name: '美好臺灣 - Discover Beautiful Taiwan',
       method: 'GET',
       target: 'https://discover.tw',
       tooltip: 'Demo website made by Solo',
