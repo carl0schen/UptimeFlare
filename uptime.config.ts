@@ -94,7 +94,7 @@ const workerConfig: WorkerConfig = {
       checkProxy: 'worker://apac',
       timeout: 5000,
     },
-
+  ],
 // You can define multiple maintenances here
 // During maintenance, an alert will be shown at status page
 // Also, related downtime notifications will be skipped (if any)
