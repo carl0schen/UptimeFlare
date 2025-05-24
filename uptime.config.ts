@@ -36,7 +36,7 @@ const workerConfig: WorkerConfig = {
     },
     {  
       id: 'foo_monitor_2',
-      name: 'RACE.TW',
+      name: 'Race.tw',
       method: 'GET',
       target: 'https://race.tw',
       tooltip: 'Solution for self-hosted serverless',
@@ -62,7 +62,7 @@ const workerConfig: WorkerConfig = {
     },
     {  
       id: 'foo_monitor_4',
-      name: 'GHOST.TW',
+      name: 'Ghost.tw',
       method: 'GET',
       target: 'https://ghost.tw',
       tooltip: 'x2.email',
@@ -75,10 +75,10 @@ const workerConfig: WorkerConfig = {
     },
     {  
       id: 'foo_monitor_5',
-      name: '美好臺灣 - Discover Beautiful Taiwan',
+      name: '美好臺灣',
       method: 'GET',
       target: 'https://discover.tw',
-      tooltip: 'Demo website made by Solo',
+      tooltip: 'Discover Beautiful Taiwan',
       statusPageLink: 'https://discover.tw',
       expectedCodes: [200],
       timeout: 10000,
