@@ -11,7 +11,7 @@ const pageConfig: PageConfig = {
   // If not specified, all monitors will be shown in a single list
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
-    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4',],
+    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4'],
     '🔐 Private': ['foo_monitor_3', 'foo_monitor_6'],
   },
 }
