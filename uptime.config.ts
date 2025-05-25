@@ -73,19 +73,6 @@ const workerConfig: WorkerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
-    {  
-      id: 'foo_monitor_5',
-      name: '美好臺灣',
-      method: 'GET',
-      target: 'https://discover.tw',
-      tooltip: 'Discover Beautiful Taiwan',
-      statusPageLink: 'https://discover.tw',
-      expectedCodes: [200],
-      timeout: 10000,
-      headers: {
-        'User-Agent': 'Uptimeflare',
-      },
-    },
     {
       id: 'foo_monitor_6',
       name: 'Router Service',
