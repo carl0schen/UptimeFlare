@@ -2,7 +2,7 @@ import { MaintenanceConfig, PageConfig, WorkerConfig } from './types/config'
 
 const pageConfig: PageConfig = {
   // Title for your status page
-  title: "MYNET's Status Page",
+  title: "Mynet's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
     { link: 'mailto:reports@mynet.tw', label: 'Email Me', highlight: true },
