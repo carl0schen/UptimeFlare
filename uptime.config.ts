@@ -12,7 +12,7 @@ const pageConfig: PageConfig = {
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
     '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4'],
-    '🔐 Private': ['foo_monitor_3', 'foo_monitor_6'],
+    '🔐 Private': ['foo_monitor_3'],
   },
 }
 
@@ -72,14 +72,6 @@ const workerConfig: WorkerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare',
       },
-    },
-    {
-      id: 'foo_monitor_6',
-      name: 'Router Service',
-      method: 'TCP_PING',
-      target: 'r0uter.synology.me',
-      checkProxy: 'worker://apac',
-      timeout: 5000,
     },
   ],
   notification: {
