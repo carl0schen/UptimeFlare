@@ -77,7 +77,7 @@ const workerConfig: WorkerConfig = {
       id: 'foo_monitor_6',
       name: 'Router Service',
       method: 'TCP_PING',
-      target: 'r0uter.synology.me:80',
+      target: 'r0uter.synology.me:443',
       checkProxy: 'worker://apac',
       timeout: 5000,
     },
