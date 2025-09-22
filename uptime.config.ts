@@ -11,7 +11,7 @@ const pageConfig: PageConfig = {
   // If not specified, all monitors will be shown in a single list
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
-    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4'],
+    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4', 'foo_monitor_5'],
     '🔐 Private': ['foo_monitor_3'],
   },
 }
@@ -67,6 +67,19 @@ const workerConfig: WorkerConfig = {
       target: 'https://ghost.tw',
       tooltip: 'x2.email',
       statusPageLink: 'https://ghost.tw',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+    },
+    {  
+      id: 'foo_monitor_5',
+      name: '台股盤後 - 法人買賣超整理',
+      method: 'GET',
+      target: 'https://stock.may.tw',
+      tooltip: '利用AI彙整台股盤後資訊，快速掌握市場動向。',
+      statusPageLink: 'https://stock.may.tw',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
