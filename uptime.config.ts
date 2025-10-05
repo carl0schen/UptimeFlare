@@ -14,6 +14,14 @@ const pageConfig: PageConfig = {
     '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4', 'foo_monitor_5'],
     '🔐 Private': ['foo_monitor_3'],
   },
+  // [OPTIONAL] Set the path to your favicon, default to '/favicon.ico' if not specified
+  favicon: '/favicon.ico',
+  // [OPTIONAL] Maintenance related settings
+  maintenances: {
+    // [OPTIONAL] The color of upcoming maintenance alerts, default to 'gray'
+    // Active alerts will always use the color specified in the MaintenanceConfig
+    upcomingColor: 'gray',
+  },
 }
 
 const workerConfig: WorkerConfig = {
