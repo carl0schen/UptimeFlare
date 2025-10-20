@@ -96,19 +96,17 @@ const workerConfig: WorkerConfig = {
     },
   ],
   notification: {
-    // [Optional] apprise API server URL
-    // if not specified, no notification will be sent
-    appriseApiServer: 'https://apprisevercel-carl0schens-projects.vercel.app/notify',
-    // [Optional] recipient URL for apprise, refer to https://github.com/caronc/apprise
-    // if not specified, no notification will be sent
-    recipientUrl: 'tgram://7201891036:AAF0H6AZTk4SUVlHDIH3hI1PObb2syFglqQ/5296110669',
-    // [Optional] timezone used in notification messages, default to "Etc/GMT"
-    timeZone: 'Asia/Taipei',
-    // [Optional] grace period in minutes before sending a notification
-    // notification will be sent only if the monitor is down for N continuous checks after the initial failure
-    // if not specified, notification will be sent immediately
-    gracePeriod: 5,
-  },
+   webhook: {
+            url: 'https://apprisevercel-carl0schens-projects.vercel.app/notify',
+            payloadType: 'json',
+            payload: {
+                urls: 'tgram://7201891036:AAF0H6AZTk4SUVlHDIH3hI1PObb2syFglqQ/5296110669/', 
+                body: '$MSG'
+            },
+        },
+        timeZone: 'Asia/Taipei', // 時區
+        gracePeriod: 5, // 寬限期 (分鐘)
+},
   callbacks: {
     onStatusChange: async (
       env: any,
