@@ -72,7 +72,7 @@ export default function OverallStatus({
     }))
 
   const upcomingMaintenances: (Omit<MaintenanceConfig, 'monitors'> & {
-    monitors?: MonitorTarget[]
+    monitors?: (MonitorTarget | undefined)[]
   })[] = maintenances
     .filter((m) => now < new Date(m.start))
     .map((maintenance) => ({
@@ -99,7 +99,9 @@ export default function OverallStatus({
       {upcomingMaintenances.length > 0 && (
         <>
           <Title mt="4px" style={{ textAlign: 'center', color: '#70778c' }} order={5}>
-            {`${upcomingMaintenances.length} upcoming ${upcomingMaintenances.length === 1 ? 'maintenance' : 'maintenances'}`}{' '}
+            {`${upcomingMaintenances.length} upcoming ${
+              upcomingMaintenances.length === 1 ? 'maintenance' : 'maintenances'
+            }`}{' '}
             <span
               style={{ textDecoration: 'underline', cursor: 'pointer' }}
               onClick={() => setExpandUpcoming(!expandUpcoming)}

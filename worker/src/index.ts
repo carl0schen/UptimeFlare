@@ -225,17 +225,26 @@ const Worker = {
               currentTimeSecond - currentIncident.start[0] <
                 workerConfig.notification.gracePeriod * 60 + 30)
           ) {
-            await formatAndNotify(
-              monitor,
-              false,
-              currentIncident.start[0],
-              currentTimeSecond,
-              status.err
-            )
+            if (
+              currentIncident.start[0] !== currentTimeSecond &&
+              workerConfig.notification?.skipErrorChangeNotification
+            ) {
+              console.log(
+                'Skipping notification for following error reason change due to user config'
+              )
+            } else {
+              await formatAndNotify(
+                monitor,
+                false,
+                currentIncident.start[0],
+                currentTimeSecond,
+                status.err
+              )
+            }
           } else {
             console.log(
               `Grace period (${workerConfig.notification
-                ?.gracePeriod}m) not met (currently down for ${
+                ?.gracePeriod}m) not met or no change (currently down for ${
                 currentTimeSecond - currentIncident.start[0]
               }s, changed ${monitorStatusChanged}), skipping webhook DOWN notification for ${
                 monitor.name
@@ -327,7 +336,7 @@ const Worker = {
     // Allow for a cooldown period before writing to KV
     if (
       statusChanged ||
-      currentTimeSecond - state.lastUpdate >= workerConfig.kvWriteCooldownMinutes * 60 - 10 // Allow for 10 seconds of clock drift
+      currentTimeSecond - state.lastUpdate >= (workerConfig.kvWriteCooldownMinutes ?? 3) * 60 - 10 // Allow for 10 seconds of clock drift
     ) {
       console.log('Updating state...')
       state.lastUpdate = currentTimeSecond

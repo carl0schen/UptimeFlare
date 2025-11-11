@@ -5,9 +5,11 @@ export type PageConfig = {
   links?: PageConfigLink[]
   group?: PageConfigGroup
   favicon?: string
+  logo?: string
   maintenances?: {
     upcomingColor?: string
   }
+  customFooter?: string
 }
 
 export type MaintenanceConfig = {
@@ -46,7 +48,7 @@ export type MonitorTarget = {
 }
 
 export type WorkerConfig<TEnv = Env> = {
-  kvWriteCooldownMinutes: number
+  kvWriteCooldownMinutes?: number
   passwordProtection?: string
   monitors: MonitorTarget[]
   notification?: Notification
@@ -58,9 +60,10 @@ export type Notification = {
   timeZone?: string
   gracePeriod?: number
   skipNotificationIds?: string[]
+  skipErrorChangeNotification?: boolean
 }
 
-export type WebhookConfig = {
+type SingleWebhook = {
   url: string
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH'
   headers?: { [key: string]: string | number }
@@ -68,6 +71,8 @@ export type WebhookConfig = {
   payload: any
   timeout?: number
 }
+
+export type WebhookConfig = SingleWebhook | SingleWebhook[]
 
 export type Callbacks<TEnv = Env> = {
   onStatusChange?: (
