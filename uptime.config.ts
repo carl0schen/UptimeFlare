@@ -141,7 +141,14 @@ const workerConfig: WorkerConfig = {
 // Also, related downtime notifications will be skipped (if any)
 // Of course, you can leave it empty if you don't need this feature
 // const maintenances: MaintenanceConfig[] = []
-const maintenances: MaintenanceConfig[] = []
+const maintenances: MaintenanceConfig[] = [
+  {
+    monitors: ['foo_monitor_3'],
+    title: 'Maintenance',
+    body: 'Server software upgrade',
+    start: '2026-01-01T00:00:00+08:00',
+  },
+]
 
 // Don't forget this, otherwise compilation fails.
 export { pageConfig, workerConfig, maintenances }
