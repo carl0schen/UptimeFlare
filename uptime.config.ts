@@ -61,8 +61,8 @@ const workerConfig: WorkerConfig = {
       method: 'GET',
       target: 'https://reader.race.tw',
       tooltip: 'Self-hosting with Docker',
-      // checkProxy: 'worker://apac',
-      // checkProxyFallback: true,
+      checkProxy: 'worker://apac',
+      checkProxyFallback: true,
       expectedCodes: [200],
       timeout: 10000,
       headers: {
