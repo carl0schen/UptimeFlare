@@ -7,6 +7,10 @@
 
 A more advanced, serverless, and free uptime monitoring & status page solution, powered by Cloudflare Workers, complete with a user-friendly interface.
 
+🎉 **[UPDATE 2026/01/03]** I have just migrated UptimeFlare from KV to D1 Database. I also updated the Terraform Cloudflare provider to v5 and improved the deployment process. The data structure has been optimized to resolve long-standing performance issues.
+
+New users can deploy directly, while existing users can have a simple auto migration process (upgrade docs below)! Feel free to open an issue if you run into any trouble deploying.
+
 ## ⭐Features
 
 - Open-source, easy to deploy (in under 10 minutes, no local tools required), and free
@@ -19,6 +23,7 @@ A more advanced, serverless, and free uptime monitoring & status page solution, 
   - Custom status code & keyword checks for HTTP(s)
   - Downtime notification supporting [100+ notification channels](https://github.com/caronc/apprise/wiki)
   - Customizable Webhook
+  - Multi-language support (English/Chinese)
 - Status page
   - Interactive ping (response time) chart for all types of monitors
   - Scheduled maintenances alerts & Incident history page
@@ -68,14 +73,16 @@ To contribute new features or customize your deployment furthermore, see [here](
 - [x] Compatibility date update
 - [x] Scheduled Maintenance
 - [x] Add docs for dev
-- [ ] Migration to Terraform Cloudflare provider version 5.x
-- [ ] Cloudflare D1 database
+- [x] Migration to Terraform Cloudflare provider version 5.x
+- [x] Cloudflare D1 database
 - [x] Scheduled maintenances (via IIFE)
 - [x] Simpler config example
 - [x] Upcoming maintenances
 - [x] Universal Webhook upgrade
-- [ ] i18n...? (maybe)
+- [x] i18n...? (maybe)
 - [ ] ICMP via proxy?
 - [x] Add default UA
-- [ ] Customizable footer
-- [ ] New header logo
+- [x] Customizable footer
+- [x] New header logo
+- [x] Improve CPU time usage
+- [x] Local deployment (docs WIP)
