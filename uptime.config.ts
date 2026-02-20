@@ -84,10 +84,10 @@ const workerConfig: WorkerConfig = {
     },
     {  
       id: 'foo_monitor_5',
-      name: '台股盤後 - 法人買賣超整理',
+      name: '台股法人買賣超整理',
       method: 'GET',
       target: 'https://stock.may.tw',
-      tooltip: '利用AI彙整台股盤後資訊，快速掌握市場動向。',
+      tooltip: '利用 AI 彙整台股盤後資訊，快速掌握市場動向。',
       statusPageLink: 'https://stock.may.tw',
       expectedCodes: [200],
       timeout: 10000,
