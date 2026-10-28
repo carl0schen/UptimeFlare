@@ -11,7 +11,7 @@ const pageConfig: PageConfig = {
   // If not specified, all monitors will be shown in a single list
   // If specified, monitors will be grouped and ordered, not-listed monitors will be invisble (but still monitored)
   group: {
-    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4', 'foo_monitor_5'],
+    '🌐 Public': ['foo_monitor_1', 'foo_monitor_2', 'foo_monitor_4', 'foo_monitor_5', 'foo_monitor_6'],
     '🔐 Private': ['foo_monitor_3'],
   },
   // [OPTIONAL] Set the path to your favicon, default to '/favicon.ico' if not specified
@@ -42,7 +42,7 @@ const workerConfig: WorkerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
-    {  
+    {
       id: 'foo_monitor_2',
       name: 'Race.tw',
       method: 'GET',
@@ -69,7 +69,7 @@ const workerConfig: WorkerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
-    {  
+    {
       id: 'foo_monitor_4',
       name: 'Ghost.tw',
       method: 'GET',
@@ -82,7 +82,7 @@ const workerConfig: WorkerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
-    {  
+    {
       id: 'foo_monitor_5',
       name: '台股法人買賣超整理',
       method: 'GET',
@@ -95,13 +95,26 @@ const workerConfig: WorkerConfig = {
         'User-Agent': 'Uptimeflare',
       },
     },
+    {
+      id: 'foo_monitor_6',
+      name: 'Discover Taiwan - 探索臺灣',
+      method: 'GET',
+      target: 'https://discover.tw',
+      tooltip: 'Explore the beauty of Taiwan through our lens. Discover breathtaking landscapes, rich culture, and sustainable tourism.',
+      statusPageLink: 'https://discover.tw',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
+    },
   ],
   notification: {
    webhook: {
             url: 'https://apprisevercel-carl0schens-projects.vercel.app/notify',
             payloadType: 'json',
             payload: {
-                urls: 'tgram://7201891036:AAF0H6AZTk4SUVlHDIH3hI1PObb2syFglqQ/5296110669/', 
+                urls: 'tgram://7201891036:AAF0H6AZTk4SUVlHDIH3hI1PObb2syFglqQ/5296110669/',
                 body: '$MSG'
             },
         },
